@@ -1,8 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const authLayout
- = () => {
+const authLayout= () => {
   return (
     <View>
       <Text>authLayout
