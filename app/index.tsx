@@ -62,7 +62,7 @@ const App = () => {
 
     //   <StatusBar backgroundColor="#161622" style="light" />
     // </SafeAreaView>
-    <View className="flex-1 items-center juctify-center bg-white">
+    <View className="flex-1 items-center justify-center bg-white">
       <Text className="text-3xl font-black ">Hey there!!</Text>
       <StatusBar style="auto" />
       <Link href="/home" style={{ color: "blue" }}>
