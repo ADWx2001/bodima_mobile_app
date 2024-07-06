@@ -16,7 +16,7 @@ const SignIn = () => {
             resizeMode="contain"
           />
           <Text className="text-lg font-semibold text-black text-center mt-4">
-            Make Your Hostel Experience Flawless
+            Sign-in page
           </Text>
           <View className="flex-row items-center mt-4">
             <View className="w-2 h-2 bg-gray-400 rounded-full mx-1"></View>
@@ -30,9 +30,9 @@ const SignIn = () => {
             containerStyle='w-full'
           />
           <Text className="text-sm text-gray-500 mt-4">
-            Already have an account?{" "}
-            <Link href="/login" className="text-orange-500 font-semibold">
-              Login
+            Havent an account?{" "}
+            <Link href="/sign-up" className="text-orange-500 font-semibold">
+              Signup
             </Link>
           </Text>
         </View>

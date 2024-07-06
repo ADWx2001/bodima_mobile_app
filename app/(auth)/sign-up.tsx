@@ -16,7 +16,7 @@ const SignUp = () => {
             resizeMode="contain"
           />
           <Text className="text-lg font-semibold text-black text-center mt-4">
-            Make Your Hostel Experience
+            signup page
           </Text>
           <View className="flex-row items-center mt-4">
             <View className="w-2 h-2 bg-gray-400 rounded-full mx-1"></View>
@@ -31,7 +31,7 @@ const SignUp = () => {
           />
           <Text className="text-sm text-gray-500 mt-4">
             Already have an account?{" "}
-            <Link href="/login" className="text-orange-500 font-semibold">
+            <Link href="/sign-in" className="text-orange-500 font-semibold">
               Login
             </Link>
           </Text>
