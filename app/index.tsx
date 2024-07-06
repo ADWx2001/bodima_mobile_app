@@ -80,7 +80,7 @@ const App = () => {
             resizeMode="contain"
           ></Image>
           <Text className="text-black text-lg font-psemibold text-center">
-            Your dorm is few taps away from you!.
+            Make your hostel experience flawless. 
           </Text>
           <CustomButton
             title="Continue with Email"
@@ -94,6 +94,7 @@ const App = () => {
             handlePress={() => {}}
             containerStyle="w-full mt-3 bg-red-700"
             textStyles="text-white"
+            
           />
 
           <Text className="text-xs text-grey-300 mb-0">test build v1</Text>
