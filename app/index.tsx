@@ -1,7 +1,17 @@
 import React from "react";
-import { View, Text, Image, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import SignUp from "./(auth)/sign-up";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { images } from "@/constants";
 
 const App = () => {
   return (
@@ -62,13 +72,14 @@ const App = () => {
 
     //   <StatusBar backgroundColor="#161622" style="light" />
     // </SafeAreaView>
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="text-3xl font-black ">Hey there!!</Text>
-      <StatusBar style="auto" />
-      <Link href="/home" style={{ color: "blue" }}>
-        Go to home
-      </Link>
-    </View>
+    <SafeAreaView className="flex-1 items-center justify-center bg-white">
+      <ScrollView contentContainerStyle={{height:'100%'}}>
+        <View className="w-full justify-center items-center h-full px-4">
+          <Image source={images.logo} className="w-72 h-72" resizeMode="contain"></Image>
+          <Text className="text-black font-semibold text-lg">Your dorm is few taps away from you!.</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
