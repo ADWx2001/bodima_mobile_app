@@ -4,10 +4,8 @@ import {
   Text,
   Image,
   ScrollView,
-  Button,
-  TouchableOpacity,
 } from "react-native";
-import { Link } from "expo-router";
+import { Link, Redirect, router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import SignUp from "./(auth)/sign-up";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -75,7 +73,7 @@ const App = () => {
     // </SafeAreaView>
     <SafeAreaView className="flex-1 items-center justify-center bg-white">
       <ScrollView contentContainerStyle={{ height: "100%" }}>
-        <View className="w-full justify-center items-center h-full px-4 text-center">
+        <View className="w-full justify-center items-center min-h-[85vh] px-4 text-center">
           <Image
             source={images.logo}
             className="w-72 h-72"
@@ -86,7 +84,7 @@ const App = () => {
           </Text>
           <CustomButton
             title="Continue with Email"
-            handlePress={() => {}}
+            handlePress={() => router.push('/sign-in')}
             containerStyle="w-full mt-7"
             textStyles={undefined}
           />
