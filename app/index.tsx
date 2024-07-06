@@ -81,7 +81,7 @@ const App = () => {
             className="w-72 h-72"
             resizeMode="contain"
           ></Image>
-          <Text className="text-black text-lg font-psemibold">
+          <Text className="text-black text-lg font-psemibold text-center">
             Your dorm is few taps away from you!.
           </Text>
           <CustomButton
