@@ -16,7 +16,7 @@ const Third = () => {
             resizeMode="contain"
           />
           <Text className="text-lg font-semibold text-black text-center mt-4">
-            Easily find your meals nearby.
+            Easily find your favourite meals nearby.
           </Text>
           <View className="flex-row items-center mt-4">
             <View className="w-2 h-2 bg-gray-400 rounded-full mx-1"></View>
