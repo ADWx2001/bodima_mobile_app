@@ -12,6 +12,7 @@ import { StatusBar } from "expo-status-bar";
 import SignUp from "./(auth)/sign-up";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
+import CustomButton from "../components/customButton";
 
 const App = () => {
   return (
@@ -73,11 +74,34 @@ const App = () => {
     //   <StatusBar backgroundColor="#161622" style="light" />
     // </SafeAreaView>
     <SafeAreaView className="flex-1 items-center justify-center bg-white">
-      <ScrollView contentContainerStyle={{height:'100%'}}>
-        <View className="w-full justify-center items-center h-full px-4">
-          <Image source={images.logo} className="w-72 h-72" resizeMode="contain"></Image>
-          <Text className="text-black font-semibold text-lg">Your dorm is few taps away from you!.</Text>
+      <ScrollView contentContainerStyle={{ height: "100%" }}>
+        <View className="w-full justify-center items-center h-full px-4 text-center">
+          <Image
+            source={images.logo}
+            className="w-72 h-72"
+            resizeMode="contain"
+          ></Image>
+          <Text className="text-black text-lg font-psemibold">
+            Your dorm is few taps away from you!.
+          </Text>
+          <CustomButton
+            title="Continue with Email"
+            handlePress={() => {}}
+            containerStyle="w-full mt-7"
+            textStyles={undefined}
+          />
+
+          <CustomButton
+            title="Continue with Google"
+            handlePress={() => {}}
+            containerStyle="w-full mt-3 bg-red-700"
+            textStyles="text-white"
+          />
+
+          <Text className="text-xs text-grey-300 mb-0">test build v1</Text>
         </View>
+
+        <StatusBar backgroundColor="#161622" style="light" />
       </ScrollView>
     </SafeAreaView>
   );
