@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, FlatList, Modal, B
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { FontAwesome } from '@expo/vector-icons';
+import { Link } from 'expo-router';
 
 const dummyData = {
   nearestLocations: [
@@ -31,6 +32,7 @@ const Home = () => {
   const [selectedLocation, setSelectedLocation] = useState('Los Angeles, USA');
   const [search, setSearch] = useState('');
   const [isFocused, setIsFocused] = useState(false);
+  const [isFocused2, setIsFocused2] = useState(false);
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -71,7 +73,9 @@ const Home = () => {
         <View className="flex-row items-center px-4 mt-4">
           <TextInput
             placeholder="Search Dorm"
-            className="flex-1 border border-gray-300 rounded-lg p-2"
+            className={`border rounded-lg p-2 ml-2 flex-1 ${isFocused2 ? 'border-orange-500' : 'border-gray-300'}`}
+              onFocus={() => setIsFocused2(true)}
+              onBlur={() => setIsFocused2(false)}
           />
           <TouchableOpacity className="ml-2 p-2 border border-gray-300 rounded-lg">
             <FontAwesome name="sliders" size={24} color="black" />
@@ -80,14 +84,17 @@ const Home = () => {
 
         <View className="px-4 mt-4">
           <Image
-            source={require('../../assets/dorm2.jpg')}
+            source={require('../../assets/hero.jpg')}
             className="w-full h-40 rounded-lg"
             resizeMode="cover"
           />
-          <View className="absolute inset-0 justify-center items-center">
-            <Text className="text-white text-lg font-bold">Find Your Perfect Dorm With Us</Text>
-            <TouchableOpacity className="bg-white py-2 px-4 rounded-full mt-2">
-              <Text className="text-primary">Get Started</Text>
+          <View className="absolute inset-0 justify-center items-center mt-3">
+            <Text className="text-white text-lg font-bold left-6 top-5">Find Your Perfect</Text>
+            <Text className="text-white text-3xl font-bold left-10 top-5"> Dorm With Us</Text>
+            <TouchableOpacity className="bg-white py-2 px-4 rounded-full mt-5">
+              <Link href='search'>
+                <Text className="text-primary">Get Started</Text>
+              </Link>
             </TouchableOpacity>
           </View>
         </View>
