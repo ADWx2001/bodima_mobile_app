@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, FlatList, Modal, Button, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, FlatList, Modal, Button, Image, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { FontAwesome } from '@expo/vector-icons';
@@ -25,10 +25,30 @@ const locations = [
   'Los Angeles, USA',
 ];
 
+
 const Home = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState('Los Angeles, USA');
   const [search, setSearch] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
+  const [locations, setLocations] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchLocations();
+  }, []);
+
+  const fetchLocations = async () => {
+    try {
+      const response = await fetch('https://locatesrilanka.herokuapp.com/cities');
+      const data = await response.json();
+      setLocations(data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching locations:', error);
+      setLoading(false);
+    }
+  };
 
   const filteredLocations = locations.filter(location => 
     location.toLowerCase().includes(search.toLowerCase())
@@ -111,15 +131,19 @@ const Home = () => {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
-        <View className="flex-1 justify-center items-center bg-black bg-opacity-50">
-          <View className="w-3/4 bg-white rounded-lg p-4">
+        <View className="flex-1 justify-center items-center bg-white bg-opacity-50">
+          <View className="w-5/6 bg-gray-50 rounded-lg p-3">
             <Text className="text-xl font-bold mb-4">Select Location</Text>
             <TextInput
               placeholder="Search Location"
-              className="border border-gray-300 rounded-lg p-2 mb-4"
+              className={`border rounded-lg p-2 mb-4 ${isFocused ? 'border-orange-500' : 'border-gray-300'}`}
               value={search}
               onChangeText={setSearch}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
             />
+            {loading ? (
+              <ActivityIndicator size="large" color="0000ff"/>):(
             <ScrollView>
               {filteredLocations.map((location, index) => (
                 <TouchableOpacity
@@ -131,7 +155,10 @@ const Home = () => {
                 </TouchableOpacity>
               ))}
             </ScrollView>
-            <Button title="Close" onPress={() => setModalVisible(false)} />
+              )}
+            <TouchableOpacity onPress={() => setModalVisible(false)} className="bg-secondary-100 mt-5 rounded-xl min-h-[45px] justify-center items-center text-center">
+              <Text className='text-white font-psemibold text-md'>Close</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
