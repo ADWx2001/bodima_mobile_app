@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, FlatList, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, FlatList, Modal, Button, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { FontAwesome } from '@expo/vector-icons';
@@ -16,16 +16,37 @@ const dummyData = {
   ],
 };
 
+const locations = [
+  'New York, USA',
+  'San Francisco, USA',
+  'Chicago, USA',
+  'Miami, USA',
+  'Dallas, USA',
+  'Los Angeles, USA',
+];
+
 const Home = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState('Los Angeles, USA');
+  const [search, setSearch] = useState('');
+
+  const filteredLocations = locations.filter(location => 
+    location.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const handleLocationSelect = (location) => {
+    setSelectedLocation(location);
+    setModalVisible(false);
+  };
   return (
     <SafeAreaView className="bg-white h-full">
       <StatusBar backgroundColor="#ffffff" style="dark" />
 
       <ScrollView contentContainerStyle={{ paddingBottom: 16 }}>
-        <View className="px-4">
+        <TouchableOpacity onPress={() => setModalVisible(true)} className="px-4">
           <Text className="text-gray-500">Current Location</Text>
-          <Text className="text-xl font-bold">Los Angeles, USA</Text>
-        </View>
+          <Text className="text-xl font-bold">{selectedLocation}</Text>
+        </TouchableOpacity>
 
         <View className="flex-row items-center px-4 mt-4">
           <TextInput
@@ -39,7 +60,7 @@ const Home = () => {
 
         <View className="px-4 mt-4">
           <Image
-            source={require('../../assets/dorm1.jpg')}
+            source={require('../../assets/dorm2.jpg')}
             className="w-full h-40 rounded-lg"
             resizeMode="cover"
           />
@@ -84,7 +105,36 @@ const Home = () => {
         </View>
       </ScrollView>
 
-      
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View className="flex-1 justify-center items-center bg-black bg-opacity-50">
+          <View className="w-3/4 bg-white rounded-lg p-4">
+            <Text className="text-xl font-bold mb-4">Select Location</Text>
+            <TextInput
+              placeholder="Search Location"
+              className="border border-gray-300 rounded-lg p-2 mb-4"
+              value={search}
+              onChangeText={setSearch}
+            />
+            <ScrollView>
+              {filteredLocations.map((location, index) => (
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => handleLocationSelect(location)}
+                  className="py-2"
+                >
+                  <Text>{location}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+            <Button title="Close" onPress={() => setModalVisible(false)} />
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };
