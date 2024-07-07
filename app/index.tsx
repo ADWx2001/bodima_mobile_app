@@ -96,7 +96,9 @@ const App = () => {
             textStyles="text-white"
             
           />
-
+          <Link href="home">
+          go to home
+          </Link>
           <Text className="text-xs text-grey-300 mb-0">test build v1</Text>
         </View>
 
