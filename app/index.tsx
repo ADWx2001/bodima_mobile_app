@@ -1,7 +1,16 @@
 import React from "react";
-import { View, Text, Image, ScrollView } from "react-native";
-import { Link } from "expo-router";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+} from "react-native";
+import { Link, Redirect, router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import SignUp from "./(auth)/sign-up";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { images } from "@/constants";
+import CustomButton from "../components/customButton";
 
 const App = () => {
   return (
@@ -62,13 +71,38 @@ const App = () => {
 
     //   <StatusBar backgroundColor="#161622" style="light" />
     // </SafeAreaView>
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="text-3xl font-black ">Hey there!!</Text>
-      <StatusBar style="auto" />
-      <Link href="/home" style={{ color: "blue" }}>
-        Go to home
-      </Link>
-    </View>
+    <SafeAreaView className="flex-1 items-center justify-center bg-white">
+      <ScrollView contentContainerStyle={{ height: "100%" }}>
+        <View className="w-full justify-center items-center min-h-[85vh] px-4 text-center">
+          <Image
+            source={images.logo}
+            className="w-72 h-72"
+            resizeMode="contain"
+          ></Image>
+          <Text className="text-black text-lg font-psemibold text-center">
+            Make your hostel experience flawless. 
+          </Text>
+          <CustomButton
+            title="Continue with Email"
+            handlePress={() => router.push('/first')}
+            containerStyle="w-full mt-7"
+            textStyles={undefined}
+          />
+
+          <CustomButton
+            title="Continue with Google"
+            handlePress={() => {}}
+            containerStyle="w-full mt-3 bg-red-700"
+            textStyles="text-white"
+            
+          />
+
+          <Text className="text-xs text-grey-300 mb-0">test build v1</Text>
+        </View>
+
+        <StatusBar backgroundColor="#161622" style="light" />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
