@@ -40,17 +40,8 @@ const WishlistScreen = () => {
   return (
     <SafeAreaView className="bg-gray-100 h-full">
       <StatusBar backgroundColor="#ffffff" style="dark" />
-      <View className="flex-row justify-between items-center p-4 bg-white shadow">
-        <FontAwesome name="arrow-left" size={24} color="black" />
-        <Text className="text-xl font-bold">✨ BIRTHDAY WISHES ✨</Text>
-        <Text className="text-blue-500">Edit</Text>
-      </View>
-      <View className="p-4">
-        <Text className="text-center text-gray-500">Materialised: 1/5</Text>
-        <View className="h-1 bg-gray-200 my-2">
-          <View className="w-1/5 h-full bg-blue-500"></View>
-        </View>
-      </View>
+      
+    
       <ScrollView className="px-4">
         {wishes.map((wish) => (
           <View key={wish.id} className="flex-row justify-between items-center bg-white p-4 mb-4 rounded-lg shadow">
@@ -68,10 +59,7 @@ const WishlistScreen = () => {
       <TouchableOpacity className="bg-black p-4 rounded-full shadow absolute bottom-10 right-10">
         <Text className="text-white font-bold">+ Add Wish</Text>
       </TouchableOpacity>
-      <View className="flex-row justify-between items-center p-4 bg-white shadow mt-4">
-        <Text className="text-gray-500">Updated Just Now</Text>
-        <Text className="text-gray-500">Created on 21/09/2023</Text>
-      </View>
+      
     </SafeAreaView>
   );
 };

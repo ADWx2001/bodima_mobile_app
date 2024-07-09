@@ -45,26 +45,6 @@ const Booking = () => {
     <SafeAreaView className="bg-gray-100 h-full">
       <StatusBar backgroundColor="#ffffff" style="dark" />
 
-      <View className="bg-blue-900 p-6 rounded-b-3xl shadow">
-        <View className="flex-row justify-between items-center">
-          <FontAwesome name="arrow-left" size={24} color="white" />
-          <FontAwesome name="filter" size={24} color="white" />
-        </View>
-        <View className="mt-6">
-          <Text className="text-gray-200">New York, NY</Text>
-          <Text className="text-3xl font-bold text-white">NYP</Text>
-          <FontAwesome name="train" size={24} color="white" />
-          <Text className="text-gray-200">Boston, MA</Text>
-          <Text className="text-3xl font-bold text-white">BBY</Text>
-        </View>
-        <View className="mt-4 flex-row justify-around">
-          <Text className="text-gray-300">Oct 18</Text>
-          <Text className="text-yellow-500">Oct 20</Text>
-          <Text className="text-gray-300">Oct 21</Text>
-          <Text className="text-gray-300">Oct 22</Text>
-        </View>
-      </View>
-
       <ScrollView className="mt-6 px-4">
         {trips.map((trip) => (
           <View key={trip.id} className="bg-white p-4 mb-4 rounded-lg shadow">

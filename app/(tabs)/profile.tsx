@@ -10,26 +10,26 @@ const Profile = () => {
   const toggleSwitch = () => setIsDarkMode(previousState => !previousState);
 
   return (
-    <SafeAreaView className="bg-gray-100 h-full">
+    <SafeAreaView className="h-full">
       <StatusBar backgroundColor="#ffffff" style="dark" />
       
-      <View className="bg-white p-6 rounded-b-3xl shadow">
+      <View className=" p-6 rounded-b-3xl shadow mt-0">
         <View className="items-center">
           <Image 
-            source={{ uri: 'https://randomuser.me/api/portraits/women/79.jpg' }} 
+            source={{ uri: 'https://avatars.githubusercontent.com/u/108501761?v=4' }} 
             className="w-24 h-24 rounded-full" 
           />
-          <Text className="mt-4 text-2xl font-bold">Madelynn Griffin</Text>
-          <Text className="text-orange-500">⚡ Gold member</Text>
+          <Text className="mt-4 text-2xl font-bold">Asanka Dilshan</Text>
+          <Text className="text-orange-500">⚡ ADWx2001</Text>
         </View>
 
         <View className="mt-6">
           <Text className="text-gray-600">Phone</Text>
-          <Text className="text-lg">+5999-661-6161</Text>
+          <Text className="text-lg">+9470 119 4600</Text>
         </View>
         <View className="mt-2">
           <Text className="text-gray-600">Mail</Text>
-          <Text className="text-lg">marin@gmail.com</Text>
+          <Text className="text-lg">asanka@gmail.com</Text>
         </View>
       </View>
 
